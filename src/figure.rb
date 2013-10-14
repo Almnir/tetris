@@ -6,7 +6,7 @@ class Figure
     @velocity = 0.0
     @x = @y = 0.0
     @angle = 0.0
-    @image = Gosu::Image.new(window, "h:\\RubyProjects\\tetris\\media\\tetris.bmp", false)
+    @image = Gosu::Image.new(window, MEDIA_FOLDER + "tetris.png", false)
   end
 
   def warp(x, y)
@@ -14,8 +14,8 @@ class Figure
   end
 
   def turn
-    if (@angle > 270)
-      @angle = 0
+    if (@angle > 360)
+      @angle = 0.0
     elsif
       @angle += 90.0
     end
@@ -34,7 +34,7 @@ class Figure
   end
 
   def drop_down
-    @velocity = 10
+    @velocity = 10.0
   end
 
   def move
@@ -42,18 +42,18 @@ class Figure
   end
 
   def check_bounds
-    x_bound = @image.width/2
-    y_bound = @image.height/2
+    x_bound = @image.width/2.0
+    y_bound = @image.height/2.0
     if (@x + x_bound >= X_size)
       @x = X_size - x_bound
     end
-    if (@x - x_bound <= 0)
+    if (@x - x_bound <= 0.0)
       @x = 0 + x_bound
     end
     if (@y + y_bound >= Y_size)
       @y = Y_size - y_bound
     end
-    if (@y - y_bound <= 0)
+    if (@y - y_bound <= 0.0)
       @y = 0 + y_bound
     end
   end

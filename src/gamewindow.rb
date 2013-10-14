@@ -8,7 +8,7 @@ class GameWindow < Gosu::Window
     super(X_size, Y_size, false)
     self.caption = "Tetris game"
 
-    @background_image = Gosu::Image.new(self, "h:\\RubyProjects\\tetris\\media\\background.bmp", true)
+    @background_image = Gosu::Image.new(self, MEDIA_FOLDER + "/background.png", true)
 
     @figure = Figure.new(self)
     @figure.warp(X_size/2, Y_size/2)
@@ -27,7 +27,7 @@ class GameWindow < Gosu::Window
     if button_down? Gosu::KbSpace then
       @figure.drop_down
     end
-    if button_down? Gosu::KbUp or button_down? Gosu::GpButton5 then
+    if button_down? Gosu::KbUp then
       @figure.turn
     end
     @figure.move
